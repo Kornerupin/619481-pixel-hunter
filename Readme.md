@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Андрей Брайловский](https://up.htmlacademy.ru/ecmascript/5/user/619481).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Ульянов](https://up.htmlacademy.ru/ecmascript/5/user/135131).
 
 ---
 
