@@ -37,10 +37,22 @@ const rules = functions.createDOMNodeFromTemplate(`
     </div>
   </footer>`);
 
-// const nextButton = document.querySelector('.rules__button');
-// nextButton.addEventListener('click', function()
-// {
-//   functions.setScreen(game1);
-// });
+const rulesInput = document.querySelector('.rules__input');
+
+const nextButton = document.querySelector('.rules__button');
+
+rulesInput.addEventListener('keyup', function () {
+  if (rulesInput.value != '') {
+    nextButton.disabled = false;
+  }
+  else {
+    nextButton.disabled = true;
+  }
+});
+
+nextButton.addEventListener('click', function()
+{
+  functions.setScreen(game1);
+});
 
 export default rules;

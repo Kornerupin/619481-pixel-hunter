@@ -1,6 +1,6 @@
 const setScreen = function(screen)
 {
-  const centralContent = document.querySelector('.central__content');
+  const centralContent = document.querySelector('.central');
 
   while (centralContent.firstChild) {
     centralContent.removeChild(centralContent.firstChild)

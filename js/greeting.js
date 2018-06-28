@@ -27,10 +27,10 @@ const greeting = functions.createDOMNodeFromTemplate(`
   </footer>
 `);
 
-// const nextButton = document.querySelector('.greeting__continue');
-// nextButton.addEventListener('click', function()
-// {
-//   functions.setScreen(rules);
-// });
+const nextButton = document.querySelector('.greeting__continue');
+nextButton.addEventListener('click', function()
+{
+  functions.setScreen(rules);
+});
 
 export default greeting;
