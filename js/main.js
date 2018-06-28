@@ -3,12 +3,14 @@
 let screenPosition = 0;
 const keyCodeLeft = 37;
 const keyCodeRight = 39;
-let templates = document.querySelectorAll(`template`);
+const templates = document.querySelectorAll(`template`);
 
-let setScreen = function (num) {
-  let centralContent = document.querySelector(`.central`);
-  let template = templates[num].content.cloneNode(true);
-  centralContent.innerHTML = ``;
+const setScreen = function (num) {
+  const centralContent = document.querySelector(`.central`);
+  const template = templates[num].content.cloneNode(true);
+  while (centralContent.firstChild) {
+    centralContent.removeChild(centralContent.firstChild);
+  }
   centralContent.appendChild(template);
 };
 
