@@ -55,10 +55,10 @@ const game3 = functions.createDOMNodeFromTemplate(`
     </div>
   </footer>`);
 
-const nextButtons = document.querySelectorAll('.game__option');
+const nextButtons = document.querySelectorAll(`.game__option`);
+
 for (let i = 0; i < nextButtons.length; i++) {
-  nextButtons[i].addEventListener('click', function()
-  {
+  nextButtons[i].addEventListener(`click`, function () {
     functions.setScreen(greeting);
   });
 }

@@ -7,9 +7,8 @@ const intro = functions.createDOMNodeFromTemplate(`
       <p class="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.</p>
     </div>`);
 
-const nextButton = document.querySelector('.intro__asterisk');
-nextButton.addEventListener('click', function()
-{
+const nextButton = document.querySelector(`.intro__asterisk`);
+nextButton.addEventListener(`click`, function () {
   functions.setScreen(greeting);
 });
 

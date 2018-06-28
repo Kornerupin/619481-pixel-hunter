@@ -58,10 +58,9 @@ const game2 = functions.createDOMNodeFromTemplate(`
   </footer>
 `);
 
-const nextButtons = document.querySelectorAll('.game__answer');
+const nextButtons = document.querySelectorAll(`.game__answer`);
 for (let i = 0; i < nextButtons.length; i++) {
-  nextButtons[i].addEventListener('click', function()
-  {
+  nextButtons[i].addEventListener(`click`, function () {
     functions.setScreen(game3);
   });
 }

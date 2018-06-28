@@ -1,17 +1,15 @@
-const setScreen = function(screen)
-{
-  const centralContent = document.querySelector('.central');
+const setScreen = function (screen) {
+  const centralContent = document.querySelector(`.central`);
 
   while (centralContent.firstChild) {
-    centralContent.removeChild(centralContent.firstChild)
+    centralContent.removeChild(centralContent.firstChild);
   }
 
   centralContent.appendChild(screen.cloneNode(true));
 };
 
-const createDOMNodeFromTemplate = function(elementStringData)
-{
-  let temp = document.createElement('div');
+const createDOMNodeFromTemplate = function (elementStringData) {
+  let temp = document.createElement(`div`);
   temp.innerHTML = elementStringData;
   return temp.firstChild;
 };
