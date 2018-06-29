@@ -21,7 +21,7 @@ const intro = `
 
 const nextButton = `.intro__asterisk`;
 
-document.addEventListener(`click`, function (evt) {
+document.addEventListener(`click`, (evt) => {
   if (evt.target &&
       evt.target.matches(nextButton)) {
     functions.setScreen(greeting);
