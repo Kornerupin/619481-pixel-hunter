@@ -1,7 +1,7 @@
 import * as functions from "./functions";
 import rules from "./rules";
 
-const greeting = functions.createDOMNodeFromTemplate(`
+const greeting = `
   <div class="greeting central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
@@ -25,14 +25,14 @@ const greeting = functions.createDOMNodeFromTemplate(`
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
   </footer>
-`);
+`;
 
-const nextButton = `greeting__continue`;
+const nextButton = `.greeting__continue`;
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target &&
       evt.target.offsetParent &&
-      evt.target.offsetParent.className === nextButton) {
+      evt.target.offsetParent.matches(nextButton)) {
     functions.setScreen(rules);
   }
 });

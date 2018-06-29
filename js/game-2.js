@@ -1,7 +1,7 @@
 import * as functions from "./functions";
 import game3 from "./game-3";
 
-const game2 = functions.createDOMNodeFromTemplate(`
+const game2 = `
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -56,15 +56,15 @@ const game2 = functions.createDOMNodeFromTemplate(`
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
   </footer>
-`);
+`;
 
-const nextButton = `game__answer`;
+const nextButton = `.game__answer`;
 
 document.addEventListener(`change`, (evt) => {
   if (!document.querySelectorAll(`.game__option`)[1]) {
     if (evt.target &&
         evt.target.offsetParent &&
-        evt.target.offsetParent.classList.contains(nextButton)) {
+        evt.target.offsetParent.matches(nextButton)) {
       functions.setScreen(game3);
     }
   }

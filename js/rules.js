@@ -1,7 +1,7 @@
 import * as functions from "./functions";
 import game1 from "./game-1";
 
-const rules = functions.createDOMNodeFromTemplate(`
+const rules = `
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -35,26 +35,26 @@ const rules = functions.createDOMNodeFromTemplate(`
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`);
+  </footer>`;
 
-const rulesInput = `rules__input`;
+const rulesInput = `.rules__input`;
 
-const nextButton = `rules__button`;
+const nextButton = `.rules__button`;
 
 document.addEventListener(`keyup`, (evt) => {
   if (evt.target &&
-      evt.target.className === rulesInput) {
+      evt.target.matches(rulesInput)) {
     if (evt.target.value !== ``) {
-      document.querySelector(`.` + nextButton).disabled = false;
+      document.querySelector(nextButton).disabled = false;
     } else {
-      document.querySelector(`.` + nextButton).disabled = true;
+      document.querySelector(nextButton).disabled = true;
     }
   }
 });
 
 document.addEventListener(`click`, (evt) => {
-  if (evt.target.classList.contains(nextButton)) {
-    // evt.preventDefault();
+  if (evt.target.matches(nextButton)) {
+    evt.preventDefault();
     functions.setScreen(game1);
   }
 });

@@ -1,7 +1,7 @@
 import * as functions from "./functions";
 import game2 from "./game-2";
 
-const game1 = functions.createDOMNodeFromTemplate(`
+const game1 = `
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -67,13 +67,13 @@ const game1 = functions.createDOMNodeFromTemplate(`
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
   </footer>
-`);
+`;
 
 document.addEventListener(`change`, (evt) => {
   if (evt.target &&
       evt.target.offsetParent &&
       evt.target.offsetParent.offsetParent &&
-      evt.target.offsetParent.offsetParent.className === `game__option`) {
+      evt.target.offsetParent.offsetParent.matches(`.game__option`)) {
     const gameContent = document.querySelector(`.game__content`);
     const gameOptions = gameContent.querySelectorAll(`.game__option`);
 

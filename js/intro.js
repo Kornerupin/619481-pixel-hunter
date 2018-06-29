@@ -1,7 +1,7 @@
 import * as functions from "./functions";
 import greeting from "./greeting";
 
-const intro = functions.createDOMNodeFromTemplate(`
+const intro = `
   <div id="main" class="central__content">
     <div id="intro" class="intro">
       <h1 class="intro__asterisk">*</h1>
@@ -17,13 +17,13 @@ const intro = functions.createDOMNodeFromTemplate(`
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`);
+  </footer>`;
 
-const nextButton = `intro__asterisk`;
+const nextButton = `.intro__asterisk`;
 
 document.addEventListener(`click`, function (evt) {
   if (evt.target &&
-      evt.target.className === nextButton) {
+      evt.target.matches(nextButton)) {
     functions.setScreen(greeting);
   }
 });

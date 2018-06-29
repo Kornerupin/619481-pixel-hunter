@@ -1,4 +1,5 @@
-const setScreen = (screen) => {
+const setScreen = (screenDataString) => {
+  let screen = createDOMNodeFromTemplate(screenDataString);
   const centralContent = document.querySelector(`.central`);
 
   while (centralContent.firstChild) {
@@ -22,4 +23,3 @@ const createDOMNodeFromTemplate = (elementStringData) => {
 };
 
 export {setScreen};
-export {createDOMNodeFromTemplate};

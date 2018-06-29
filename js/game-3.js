@@ -1,7 +1,7 @@
 import * as functions from "./functions";
 import stats from "./stats";
 
-const game3 = functions.createDOMNodeFromTemplate(`
+const game3 = `
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -53,15 +53,15 @@ const game3 = functions.createDOMNodeFromTemplate(`
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`);
+  </footer>`;
 
-const nextButton = `game__option`;
+const nextButton = `.game__option`;
 
-document.addEventListener(`click`, (evt) => {
+document.addEventListener(`mousedown`, (evt) => {
   if (document.querySelectorAll(`.game__option`)[2]) {
     if (evt.target &&
         evt.target.offsetParent &&
-        evt.target.offsetParent.classList.contains(nextButton)) {
+        evt.target.offsetParent.matches(nextButton)) {
       functions.setScreen(stats);
     }
   }
