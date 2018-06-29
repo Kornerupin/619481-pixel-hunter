@@ -1,4 +1,4 @@
-const setScreen = function (screen) {
+const setScreen = (screen) => {
   const centralContent = document.querySelector(`.central`);
 
   while (centralContent.firstChild) {
@@ -8,7 +8,7 @@ const setScreen = function (screen) {
   centralContent.appendChild(screen);
 };
 
-const createDOMNodeFromTemplate = function (elementStringData) {
+const createDOMNodeFromTemplate = (elementStringData) => {
   const temp = document.createElement(`div`);
   const fragment = document.createDocumentFragment();
 
@@ -21,4 +21,5 @@ const createDOMNodeFromTemplate = function (elementStringData) {
   return fragment;
 };
 
-export {setScreen, createDOMNodeFromTemplate};
+export {setScreen};
+export {createDOMNodeFromTemplate};

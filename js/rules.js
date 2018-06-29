@@ -41,8 +41,9 @@ const rulesInput = `rules__input`;
 
 const nextButton = `rules__button`;
 
-document.addEventListener(`keyup`, function (evt) {
-  if (evt.target.className === rulesInput) {
+document.addEventListener(`keyup`, (evt) => {
+  if (evt.target&&
+      evt.target.className === rulesInput) {
     if (evt.target.value !== ``) {
       document.querySelector(`.` + nextButton).disabled = false;
     } else {
@@ -51,9 +52,9 @@ document.addEventListener(`keyup`, function (evt) {
   }
 });
 
-document.addEventListener(`click`, function (evt) {
+document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(nextButton)) {
-    evt.preventDefault();
+    // evt.preventDefault();
     functions.setScreen (game1);
   }
 });

@@ -60,9 +60,13 @@ const game2 = functions.createDOMNodeFromTemplate(`
 
 const nextButton = `game__answer`;
 
-document.addEventListener(`click`, function (evt) {
-  if (evt.target.className === nextButton) {
-    functions.setScreen (game3);
+document.addEventListener(`change`, (evt) => {
+  if (!document.querySelectorAll (`.game__option`)[1]) {
+    if (evt.target &&
+        evt.target.offsetParent &&
+        evt.target.offsetParent.classList.contains (nextButton)) {
+      functions.setScreen (game3);
+    }
   }
 });
 
