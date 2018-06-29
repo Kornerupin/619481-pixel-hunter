@@ -11,4 +11,3 @@ document.addEventListener(`click`, (evt) => {
     functions.setScreen(intro);
   }
 });
-
