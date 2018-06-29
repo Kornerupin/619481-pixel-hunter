@@ -69,15 +69,17 @@ const game1 = functions.createDOMNodeFromTemplate(`
   </footer>
 `);
 
-const gameContent = document.querySelector(`.game__content`);
-const gameOptions = gameContent.querySelectorAll(`.game__option`);
-const gameOptionsInputs1 = gameOptions[0].querySelectorAll(`input`);
-const gameOptionsInputs2 = gameOptions[1].querySelectorAll(`input`);
+document.addEventListener(`click`, function (evt) {
+  if (evt.target.offsetParent.className === `game__option`) {
+    const gameContent = document.querySelector(`.game__content`);
+    const gameOptions = gameContent.querySelectorAll(`.game__option`);
+    const gameOptionsInputs1 = gameOptions[0].querySelectorAll(`input`);
+    const gameOptionsInputs2 = gameOptions[1].querySelectorAll(`input`);
 
-gameContent.addEventListener(`click`, function () {
-  if (gameOptionsInputs1[0].checked === true || gameOptionsInputs1[1].checked === true &&
+    if (gameOptionsInputs1[0].checked === true || gameOptionsInputs1[1].checked === true &&
       gameOptionsInputs2[0].checked === true || gameOptionsInputs2[1].checked === true) {
-    functions.setScreen(game2);
+      functions.setScreen (game2);
+    }
   }
 });
 

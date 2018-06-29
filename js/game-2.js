@@ -58,11 +58,12 @@ const game2 = functions.createDOMNodeFromTemplate(`
   </footer>
 `);
 
-const nextButtons = document.querySelectorAll(`.game__answer`);
-for (let i = 0; i < nextButtons.length; i++) {
-  nextButtons[i].addEventListener(`click`, function () {
-    functions.setScreen(game3);
-  });
-}
+const nextButton = `game__answer`;
+
+document.addEventListener(`click`, function (evt) {
+  if (evt.target.className === nextButton) {
+    functions.setScreen (game3);
+  }
+});
 
 export default game2;

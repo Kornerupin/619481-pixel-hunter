@@ -55,11 +55,12 @@ const game3 = functions.createDOMNodeFromTemplate(`
     </div>
   </footer>`);
 
-const nextButtons = document.querySelectorAll(`.game__option`);
+const nextButton = `game__option`;
 
-for (let i = 0; i < nextButtons.length; i++) {
-  nextButtons[i].addEventListener(`click`, function () {
-    functions.setScreen(greeting);
-  });
-}
+document.addEventListener(`click`, function (evt) {
+  if (evt.target.className === nextButton) {
+    functions.setScreen (greeting);
+  }
+});
+
 export default game3;

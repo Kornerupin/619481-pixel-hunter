@@ -5,13 +5,20 @@ const setScreen = function (screen) {
     centralContent.removeChild(centralContent.firstChild);
   }
 
-  centralContent.appendChild(screen.cloneNode(true));
+  centralContent.appendChild(screen);
 };
 
 const createDOMNodeFromTemplate = function (elementStringData) {
-  let temp = document.createElement(`div`);
-  temp.innerHTML = elementStringData;
-  return temp.firstChild;
+  const temp = document.createElement(`div`);
+  const fragment = document.createDocumentFragment();
+
+  temp.innerHTML = elementStringData.trim();
+
+  while (temp.children.length > 0) {
+    fragment.appendChild(temp.children[0]);
+  }
+
+  return fragment;
 };
 
 export {setScreen, createDOMNodeFromTemplate};
