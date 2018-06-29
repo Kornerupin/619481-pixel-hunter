@@ -22,9 +22,9 @@ const intro = functions.createDOMNodeFromTemplate(`
 const nextButton = `intro__asterisk`;
 
 document.addEventListener(`click`, function (evt) {
-  if (evt.target&&
+  if (evt.target &&
       evt.target.className === nextButton) {
-    functions.setScreen (greeting);
+    functions.setScreen(greeting);
   }
 });
 

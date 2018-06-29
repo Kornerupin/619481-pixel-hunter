@@ -42,7 +42,7 @@ const rulesInput = `rules__input`;
 const nextButton = `rules__button`;
 
 document.addEventListener(`keyup`, (evt) => {
-  if (evt.target&&
+  if (evt.target &&
       evt.target.className === rulesInput) {
     if (evt.target.value !== ``) {
       document.querySelector(`.` + nextButton).disabled = false;
@@ -55,7 +55,7 @@ document.addEventListener(`keyup`, (evt) => {
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(nextButton)) {
     // evt.preventDefault();
-    functions.setScreen (game1);
+    functions.setScreen(game1);
   }
 });
 

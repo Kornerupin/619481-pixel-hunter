@@ -57,19 +57,14 @@ const game3 = functions.createDOMNodeFromTemplate(`
 
 const nextButton = `game__option`;
 
-document.addEventListener(`mousedown`, (evt) => {
-  if (document.querySelectorAll (`.game__option`)[2]) {
-    console.log("YES");
+document.addEventListener(`click`, (evt) => {
+  if (document.querySelectorAll(`.game__option`)[2]) {
     if (evt.target &&
         evt.target.offsetParent &&
         evt.target.offsetParent.classList.contains(nextButton)) {
-      functions.setScreen (stats);
+      functions.setScreen(stats);
     }
   }
-});
-
-document.addEventListener(`click`, (evt) => {
-  console.log(evt);
 });
 
 export default game3;

@@ -30,10 +30,10 @@ const greeting = functions.createDOMNodeFromTemplate(`
 const nextButton = `greeting__continue`;
 
 document.addEventListener(`click`, (evt) => {
-  if (evt.target&&
-      evt.target.offsetParent&&
+  if (evt.target &&
+      evt.target.offsetParent &&
       evt.target.offsetParent.className === nextButton) {
-    functions.setScreen (rules);
+    functions.setScreen(rules);
   }
 });
 
