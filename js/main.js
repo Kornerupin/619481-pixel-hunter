@@ -6,8 +6,7 @@ functions.setScreen (game3);
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target&&
-      evt.target.offsetParent&&
-      evt.target.offsetParent.className === `back`) {
+      evt.target.className === `back`) {
     functions.setScreen (intro);
   }
 });
