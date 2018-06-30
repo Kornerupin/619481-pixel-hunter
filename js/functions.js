@@ -123,7 +123,7 @@ const newTimer = (time) => {
       }
     },
     endTimer: () => {
-      // alert(`YOHOOOO`);
+      // Здесь можно разместить код, который выполнится, когда таймер станет = 0
     }
   };
   return timer;
