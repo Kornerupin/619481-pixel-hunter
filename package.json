@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gulp build",
     "start": "gulp serve",
-    "eslint": "eslint --ignore-path .gitignore ./gulpfile.js, js/",
+    "eslint": "eslint ./gulpfile.js, js/",
     "test": "npm run eslint && gulp test"
   },
   "devDependencies": {
