@@ -28,20 +28,20 @@ const calculateScoreForAnswers = (lives, answers) => {
   const maxTime = 30;
   let totalScore = 0;
 
+  if (!isNumeric(lives)) {
+    throw new Error(`Некорректное значение lives: кол-во жизней должно быть числом!`);
+  }
   if (lives < 0) {
     throw new Error(`Некорректное значение lives: кол-во жизней не может быть отрицательным!`);
   }
   if (lives > 3) {
     throw new Error(`Некорректное значение lives: кол-во жизней не может быть больше 3!`);
   }
-  if (!isNumeric(lives)) {
-    throw new Error(`Некорректное значение lives: кол-во жизней должно быть числом!`);
-  }
   if (answers.length !== 10) {
     throw new Error(`Некорректное кол-во элементов массива!`);
   }
   for (let i = 0; i < answers.length; i++) {
-    if (!Array.isArray(answers)) {
+    if (!Array.isArray(answers[i])) {
       throw new Error(`Некорректный тип значения элемента массива - ожидается массив!`);
     }
     if (!isNumeric(answers[i][0])) {
@@ -79,8 +79,56 @@ const calculateScoreForAnswers = (lives, answers) => {
 };
 
 const isNumeric = (n) => {
-  return !isNaN(parseFloat(n)) && isFinite(n);
+  return !isNaN(parseFloat(n)) && isFinite(n) && typeof n === `number`;
+};
+
+const newTimer = (time) => {
+  if (!isNumeric(time)) {
+    throw new Error(`Невозможно создать таймер: переданное значение не является числом!`);
+  }
+  if (time <= 0) {
+    throw new Error(`Невозможно создать таймер: переданное значение не должно быть меньше нуля!`);
+  }
+  if (time !== Math.round(time)) {
+    throw new Error(`Невозможно создать таймер: переданное значение не является целым числом!`);
+  }
+
+  const timer = {
+    timerCounter: time,
+    tickTimer: (tempTimer) => {
+      // Проверки
+      if (!(typeof tempTimer === `object`)) {
+        throw new Error(`Невозможно обновить таймер: не передан объект таймера для обновления!`);
+      }
+      if (!(typeof tempTimer.tickTimer === `function`)) {
+        throw new Error(`Невозможно обновить таймер: объект таймера повреждён \(нет функции tickTimer\)!`);
+      }
+      if (!(typeof tempTimer.endTimer === `function`)) {
+        throw new Error(`Невозможно обновить таймер: объект таймера повреждён \(нет функции endTimer\)!`);
+      }
+      if (!isNumeric(tempTimer.timerCounter)) {
+        throw new Error(`Невозможно обновить таймер: объект таймера повреждён \(счётчик таймера не является числом\)!`);
+      }
+      if (tempTimer.timerCounter < 0) {
+        throw new Error(`Невозможно обновить таймер: объект таймера повреждён \(счётчик таймера меньше нуля\)!`);
+      }
+
+      // Логика
+      if (tempTimer.timerCounter === 0) {
+        tempTimer.endTimer();
+        return 2;
+      } else {
+        tempTimer.timerCounter--;
+        return 1;
+      }
+    },
+    endTimer: () => {
+      // alert(`YOHOOOO`);
+    }
+  };
+  return timer;
 };
 
 export {setScreen};
 export {calculateScoreForAnswers};
+export {newTimer};
