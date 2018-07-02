@@ -58,7 +58,7 @@ document.addEventListener(`mousedown`, (evt) => {
     if (evt.target &&
         evt.target.offsetParent &&
         evt.target.offsetParent.matches(`.game__option`)) {
-      game.checksAnswerForQuestion(newGame, 1);
+      game.checksAnswerForQuestion(newGame, [evt.target.getAttribute(`data-value`)]);
       game.createNextGameQuestionScreen(newGame);
     }
   }

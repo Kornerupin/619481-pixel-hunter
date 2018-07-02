@@ -41,9 +41,6 @@ const calculateScoreForAnswers = (lives, answers) => {
   if (lives > 3) {
     throw new Error(`Некорректное значение lives: кол-во жизней не может быть больше 3!`);
   }
-  if (answers.length !== 10) {
-    throw new Error(`Некорректное кол-во элементов массива!`);
-  }
   for (let i = 0; i < answers.length; i++) {
     if (!Array.isArray(answers[i])) {
       throw new Error(`Некорректный тип значения элемента массива - ожидается массив!`);

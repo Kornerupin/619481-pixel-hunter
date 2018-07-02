@@ -3,7 +3,10 @@ import listeners from "./listeners";
 import intro from "./screens/intro";
 
 functions.setScreen(intro);
-let a = listeners();
-if (a) {
-  Math.round(1234);
+
+if (!listeners) {
+  let a = 1 === 1;
+  if (a) {
+    a += listeners + a;
+  }
 }

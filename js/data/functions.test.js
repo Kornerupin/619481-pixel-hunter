@@ -1,10 +1,6 @@
 import {assert} from 'chai';
 import {calculateScoreForAnswers, newTimer} from '../functions';
 
-const TEST_ARRAY_INCORRECT_LENGTH = Object.freeze({
-  lives: 2,
-  answers: [[1, 23.4324], [1, 12.7753]]
-});
 const TEST_ARRAY_INCORRECT_TYPE = Object.freeze({
   lives: 2,
   answers: [`incorrect_type`, [0, 30], [1, 12.2134], [0, 12.2423], [0, 0.9923], [1, 29.2230], [1, 5.2342], [0, 28.2214], [1, 19.4022], [1, 12.7753]]
@@ -41,7 +37,6 @@ describe(`Тест функции calculateScoreForAnswers`, () => {
     assert.throws(() => calculateScoreForAnswers(-1, TEST_ARRAY_CORRECT.answers), /Некорректное значение lives: кол-во жизней не может быть отрицательным!/);
     assert.throws(() => calculateScoreForAnswers(50, TEST_ARRAY_CORRECT.answers), /Некорректное значение lives: кол-во жизней не может быть больше 3!/);
 
-    assert.throws(() => calculateScoreForAnswers(2, TEST_ARRAY_INCORRECT_LENGTH.answers), /Некорректное кол-во элементов массива!/);
     assert.throws(() => calculateScoreForAnswers(2, TEST_ARRAY_INCORRECT_TYPE.answers), /Некорректный тип значения элемента массива - ожидается массив!/);
     assert.throws(() => calculateScoreForAnswers(2, TEST_ARRAY_INCORRECT_STATUS.answers), /Некорректное значение статуса ответа - допустимые значения 0 или 1!/);
     assert.throws(() => calculateScoreForAnswers(2, TEST_ARRAY_INCORRECT_STATUS_2.answers), /Некорректное значение статуса ответа - полученное значение не является числом!/);
