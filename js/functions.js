@@ -1,5 +1,8 @@
-const setScreen = (screenDataString) => {
+import footer from "./template/footer";
+
+const setScreen = (screenDataString, data = '') => {
   let screen = createDOMNodeFromTemplate(screenDataString);
+  let screenFooter = createDOMNodeFromTemplate(footer);
   const centralContent = document.querySelector(`.central`);
 
   while (centralContent.firstChild) {
@@ -7,13 +10,14 @@ const setScreen = (screenDataString) => {
   }
 
   centralContent.appendChild(screen);
+  centralContent.appendChild(screenFooter);
 };
 
 const createDOMNodeFromTemplate = (elementStringData) => {
   const temp = document.createElement(`div`);
   const fragment = document.createDocumentFragment();
 
-  temp.innerHTML = elementStringData.trim();
+  temp.innerHTML = elementStringData;
 
   while (temp.children.length > 0) {
     fragment.appendChild(temp.children[0]);
@@ -129,6 +133,21 @@ const newTimer = (time) => {
   return timer;
 };
 
+const getRandomFromInterval = (min, max) => {
+  return Math.round(Math.random() * (max - min) + min);
+};
+
+const getCountRandomFromInterval = (max, count) => {
+  let arr = new Set();
+
+  while (arr.size < count)
+    arr.add(getRandomFromInterval(0, max));
+
+  return arr;
+};
+
 export {setScreen};
 export {calculateScoreForAnswers};
 export {newTimer};
+export {getRandomFromInterval};
+export {getCountRandomFromInterval};
