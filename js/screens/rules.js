@@ -1,13 +1,8 @@
-export default (data) => {
+import {headerMini} from "../template/header";
+
+export default () => {
   return `
-    <header class="header">
-      <div class="header__back">
-        <button class="back">
-          <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-          <img src="img/logo_small.svg" width="101" height="44">
-        </button>
-      </div>
-    </header>
+    ${headerMini};
     <div class="rules">
       <h1 class="rules__title">Правила</h1>
       <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
@@ -25,4 +20,4 @@ export default (data) => {
       </form>
     </div>
 `;
-}
+};

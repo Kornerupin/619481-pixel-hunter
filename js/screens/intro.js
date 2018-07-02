@@ -1,4 +1,4 @@
-export default (data) => {
+export default () => {
   return `
     <div id="main" class="central__content">
       <div id="intro" class="intro">
@@ -7,4 +7,4 @@ export default (data) => {
       </div>
     </div>
 `;
-}
+};

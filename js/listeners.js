@@ -29,20 +29,20 @@ document.addEventListener(`change`, (evt) => {
       const gameContent = document.querySelector(`.game__content`);
       const gameOptions = gameContent.querySelectorAll(`.game__option`);
 
-      const gameOptionsInputs1 = gameOptions[0].querySelectorAll(`input`);
-      const gameOptionsInputs2 = gameOptions[1].querySelectorAll(`input`);
+      const gameOptionsInputsOne = gameOptions[0].querySelectorAll(`input`);
+      const gameOptionsInputsTwo = gameOptions[1].querySelectorAll(`input`);
 
-      let answers = Array();
+      let answers = [];
 
-      if (gameOptionsInputs1[0].checked === true || gameOptionsInputs1[1].checked === true) {
-        answers[0] = gameOptionsInputs1[1].value;
-        if (gameOptionsInputs1[0].checked === true) {
-          answers[0] = gameOptionsInputs1[0].value;
+      if (gameOptionsInputsOne[0].checked === true || gameOptionsInputsOne[1].checked === true) {
+        answers[0] = gameOptionsInputsOne[1].value;
+        if (gameOptionsInputsOne[0].checked === true) {
+          answers[0] = gameOptionsInputsOne[0].value;
         }
-        if (gameOptionsInputs2[0].checked === true || gameOptionsInputs2[1].checked === true) {
-          answers[1] = gameOptionsInputs2[1].value;
-          if (gameOptionsInputs1[0].checked === true) {
-            answers[1] = gameOptionsInputs2[0].value;
+        if (gameOptionsInputsTwo[0].checked === true || gameOptionsInputsTwo[1].checked === true) {
+          answers[1] = gameOptionsInputsTwo[1].value;
+          if (gameOptionsInputsTwo[0].checked === true) {
+            answers[1] = gameOptionsInputsTwo[0].value;
           }
           game.checksAnswerForQuestion(newGame, answers);
           game.createNextGameQuestionScreen(newGame);
@@ -58,7 +58,6 @@ document.addEventListener(`mousedown`, (evt) => {
     if (evt.target &&
         evt.target.offsetParent &&
         evt.target.offsetParent.matches(`.game__option`)) {
-      console.log(evt.target.getAttribute(`data-value`));
       game.checksAnswerForQuestion(newGame, 1);
       game.createNextGameQuestionScreen(newGame);
     }
@@ -71,7 +70,7 @@ document.addEventListener(`click`, (evt) => {
     if (evt.target &&
       evt.target.offsetParent &&
       evt.target.offsetParent.matches(`.greeting__continue`)) {
-      functions.setScreen(rules);
+      functions.setScreen(rules());
     }
   }
 });
@@ -81,7 +80,7 @@ document.addEventListener(`click`, (evt) => {
   if (document.querySelector(`.intro`)) {
     if (evt.target &&
       evt.target.matches(`.intro__asterisk`)) {
-      functions.setScreen(greeting);
+      functions.setScreen(greeting());
     }
   }
 });
@@ -92,7 +91,7 @@ document.addEventListener(`click`, (evt) => {
     if (evt.target &&
       evt.target.offsetParent &&
       (evt.target.matches(`.back`) || evt.target.offsetParent.matches(`.header__back`))) {
-      functions.setScreen(intro);
+      functions.setScreen(intro());
     }
   }
 });
@@ -104,7 +103,7 @@ document.addEventListener(`keyup`, (evt) => {
       evt.target.matches(`.rules__input`)) {
       if (evt.target.value !== ``) {
         document.querySelector(`.rules__button`).disabled = false;
-      }else {
+      } else {
         document.querySelector(`.rules__button`).disabled = true;
       }
     }

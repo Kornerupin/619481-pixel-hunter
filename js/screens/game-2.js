@@ -1,5 +1,9 @@
+import header from "../template/header";
+import localStats from "../template/local-stats";
+
 export default (gameData, questionNumber) => {
   return `
+    ${header(gameData)};
     <div class="game">
       <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
       <form class="game__content">
@@ -17,7 +21,6 @@ export default (gameData, questionNumber) => {
         <div class="game__option">
           <img src="${gameData.gameQuestionsData[questionNumber].questionData[1].data}" alt="Option 2" width="468" height="458">
           <label class="game__answer  game__answer--photo">
-          <script></script>
             <input name="question2" type="radio" value="photo">
             <span>Фото</span>
           </label>
@@ -28,5 +31,8 @@ export default (gameData, questionNumber) => {
         </div>
       </form>
     </div>
+    <div class="stats">
+      ${localStats(gameData.gameGamerData.gamerAnswers)};
+    </div>
 `;
-}
+};

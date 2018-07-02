@@ -1,6 +1,6 @@
 import footer from "./template/footer";
 
-const setScreen = (screenDataString, data = '') => {
+const setScreen = (screenDataString) => {
   let screen = createDOMNodeFromTemplate(screenDataString);
   let screenFooter = createDOMNodeFromTemplate(footer);
   const centralContent = document.querySelector(`.central`);
@@ -140,8 +140,9 @@ const getRandomFromInterval = (min, max) => {
 const getCountRandomFromInterval = (max, count) => {
   let arr = new Set();
 
-  while (arr.size < count)
+  while (arr.size < count) {
     arr.add(getRandomFromInterval(0, max));
+  }
 
   return arr;
 };
