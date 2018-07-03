@@ -1,12 +1,12 @@
-import intro from "./intro";
 import * as functions from "./functions";
+import listeners from "./listeners";
+import intro from "./screens/intro";
 
 functions.setScreen(intro);
 
-document.addEventListener(`click`, (evt) => {
-  if (evt.target &&
-      evt.target.offsetParent &&
-      (evt.target.matches(`.back`) || evt.target.offsetParent.matches(`.header__back`))) {
-    functions.setScreen(intro);
+if (!listeners) {
+  let a = 1 === 1;
+  if (a) {
+    a += listeners + a;
   }
-});
+}

@@ -1,5 +1,8 @@
+import footer from "./template/footer";
+
 const setScreen = (screenDataString) => {
   let screen = createDOMNodeFromTemplate(screenDataString);
+  let screenFooter = createDOMNodeFromTemplate(footer);
   const centralContent = document.querySelector(`.central`);
 
   while (centralContent.firstChild) {
@@ -7,13 +10,14 @@ const setScreen = (screenDataString) => {
   }
 
   centralContent.appendChild(screen);
+  centralContent.appendChild(screenFooter);
 };
 
 const createDOMNodeFromTemplate = (elementStringData) => {
   const temp = document.createElement(`div`);
   const fragment = document.createDocumentFragment();
 
-  temp.innerHTML = elementStringData.trim();
+  temp.innerHTML = elementStringData;
 
   while (temp.children.length > 0) {
     fragment.appendChild(temp.children[0]);
@@ -36,9 +40,6 @@ const calculateScoreForAnswers = (lives, answers) => {
   }
   if (lives > 3) {
     throw new Error(`Некорректное значение lives: кол-во жизней не может быть больше 3!`);
-  }
-  if (answers.length !== 10) {
-    throw new Error(`Некорректное кол-во элементов массива!`);
   }
   for (let i = 0; i < answers.length; i++) {
     if (!Array.isArray(answers[i])) {
@@ -123,12 +124,28 @@ const newTimer = (time) => {
       }
     },
     endTimer: () => {
-      // alert(`YOHOOOO`);
+      // Здесь можно разместить код, который выполнится, когда таймер станет = 0
     }
   };
   return timer;
 };
 
+const getRandomFromInterval = (min, max) => {
+  return Math.round(Math.random() * (max - min) + min);
+};
+
+const getCountRandomFromInterval = (max, count) => {
+  let arr = new Set();
+
+  while (arr.size < count) {
+    arr.add(getRandomFromInterval(0, max));
+  }
+
+  return arr;
+};
+
 export {setScreen};
 export {calculateScoreForAnswers};
 export {newTimer};
+export {getRandomFromInterval};
+export {getCountRandomFromInterval};
