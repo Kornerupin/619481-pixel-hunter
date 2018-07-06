@@ -1,12 +1,7 @@
-import * as functions from "./functions";
-import listeners from "./listeners";
-import intro from "./screens/intro";
+import {setScreen} from "./functions";
+import Intro from "./mvc/screens/intro";
+import Footer from "./mvc/template/footer";
 
-functions.setScreen(intro);
-
-if (!listeners) {
-  let a = 1 === 1;
-  if (a) {
-    a += listeners + a;
-  }
-}
+let startGameContent = new Intro();
+let startGameFooter = new Footer();
+setScreen(false, startGameContent.element, false, startGameFooter.element);

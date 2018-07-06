@@ -1,13 +1,11 @@
-import AbstractView from "../mvc/AbstractView";
-import * as functions from "../functions";
+import AbstractView from "../AbstractView";
+import * as functions from "../../functions";
 import intro from "../screens/intro";
 
-export default class Header extends AbstractView{
-  constructor (gameData, questionNumber) {
+export default class HeaderMini extends AbstractView {
+  constructor() {
     super();
-    this.gameData = gameData;
-    this.questionNumber = questionNumber;
-  };
+  }
 
   get template() {
     return `
@@ -22,7 +20,7 @@ export default class Header extends AbstractView{
     `;
   }
 
-  bind = () => {
+  bind() {
     // Слушатель для кнопки "Назад"
     document.addEventListener(`click`, (evt) => {
       if (document.querySelector(`.back`)) {
@@ -33,9 +31,9 @@ export default class Header extends AbstractView{
         }
       }
     });
-  };
+  }
 
-  onBack = () => {
+  onBack() {
     functions.setScreen(intro());
-  };
-};
+  }
+}

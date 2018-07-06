@@ -1,8 +1,11 @@
 import * as functions from "./functions";
-import game1 from "./screens/game-1";
-import game2 from "./screens/game-2";
-import game3 from "./screens/game-3";
-import stats from "./screens/stats";
+import Header from "./mvc/template/header";
+import Game1 from "./mvc/screens/game-1";
+import Game2 from "./mvc/screens/game-2";
+import Game3 from "./mvc/screens/game-3";
+import Footer from "./mvc/template/footer";
+import Stats from "./mvc/screens/stats";
+import LocalStats from "./mvc/template/local-stats";
 
 const COUNT_QUESTIONS = 10;
 const AnswersType = [
@@ -103,18 +106,29 @@ const createGameQuestion = (countAnswers, correctType) => {
 
 const createNextGameQuestionScreen = (gameData) => {
   let questionNumber = gameData.gameGamerData.gamerAnswers.length;
+  let headerNode = new Header(gameData.gameGamerData.gamerLives);
+  let screenNode;
+  let statsNode;
+  let footerNode = new Footer();
+
   if (questionNumber === 10 || gameData.gameGamerData.gamerLives === 0) {
-    functions.setScreen(stats(gameData));
+    screenNode = new Stats(gameData, false);
+
+    functions.setScreen(headerNode.element, false, screenNode.element, footerNode.element);
   } else {
+    statsNode = new LocalStats();
+
     if (gameData.gameQuestionsData[questionNumber].questionNodeType === 1) {
-      functions.setScreen(game1(gameData, questionNumber));
+      screenNode = new Game1(gameData, questionNumber);
     }
     if (gameData.gameQuestionsData[questionNumber].questionNodeType === 2) {
-      functions.setScreen(game2(gameData, questionNumber));
+      screenNode = new Game2(gameData, questionNumber);
     }
     if (gameData.gameQuestionsData[questionNumber].questionNodeType === 3) {
-      functions.setScreen(game3(gameData, questionNumber));
+      screenNode = new Game3(gameData, questionNumber);
     }
+
+    functions.setScreen(headerNode.element, statsNode.element, screenNode.element, footerNode.element);
   }
 };
 

@@ -1,13 +1,13 @@
-class AbstractView {
+export default class AbstractView {
   constructor() {
     // Do nothing
-  };
+  }
 
   get template() {
     // Do nothing
-  };
+  }
 
-  render = () => {
+  render() {
     const temp = document.createElement(`div`);
     const fragment = document.createDocumentFragment();
 
@@ -18,11 +18,11 @@ class AbstractView {
     }
 
     return fragment;
-  };
+  }
 
-  bind = () => {
+  bind() {
     // Do nothing
-  };
+  }
 
   get element() {
     if (!this._element) {
@@ -30,7 +30,7 @@ class AbstractView {
       this.bind();
     }
 
-    return this._element
-  };
+    return this._element;
+  }
 }
 

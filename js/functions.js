@@ -1,17 +1,23 @@
-import footer from "./template/footer";
+const setScreen = (headerNode, screenNode, statsNode, footerNode) => {
+  const centralContent = document.querySelector(`.central`);
 
-// const setScreen = (screenDataString) => {
-//   let screen = createDOMNodeFromTemplate(screenDataString);
-//   let screenFooter = createDOMNodeFromTemplate(footer);
-//   const centralContent = document.querySelector(`.central`);
-//
-//   while (centralContent.firstChild) {
-//     centralContent.removeChild(centralContent.firstChild);
-//   }
-//
-//   centralContent.appendChild(screen);
-//   centralContent.appendChild(screenFooter);
-// };
+  while (centralContent.firstChild) {
+    centralContent.removeChild(centralContent.firstChild);
+  }
+
+  if (headerNode) {
+    centralContent.appendChild(headerNode);
+  }
+  if (screenNode) {
+    centralContent.appendChild(screenNode);
+  }
+  if (statsNode) {
+    centralContent.appendChild(statsNode);
+  }
+  if (footerNode) {
+    centralContent.appendChild(footerNode);
+  }
+};
 
 // const createDOMNodeFromTemplate = (elementStringData) => {
 //   const temp = document.createElement(`div`);
@@ -147,5 +153,6 @@ const getCountRandomFromInterval = (max, count) => {
 export {setScreen};
 export {calculateScoreForAnswers};
 export {newTimer};
+export {isNumeric};
 export {getRandomFromInterval};
 export {getCountRandomFromInterval};

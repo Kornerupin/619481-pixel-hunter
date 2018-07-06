@@ -1,13 +1,10 @@
-import AbstractView from "../mvc/AbstractView";
-import * as functions from "../functions";
-import intro from "../screens/intro";
+import AbstractView from "../AbstractView";
 
-export default class Header extends AbstractView{
-  constructor (gameData, questionNumber) {
+export default class Header extends AbstractView {
+  constructor(lives) {
     super();
-    this.gameData = gameData;
-    this.questionNumber = questionNumber;
-  };
+    this.lives = lives;
+  }
 
   get template() {
     return `
@@ -20,18 +17,18 @@ export default class Header extends AbstractView{
       </div>
       <h1 class="game__timer">NN</h1>
       <div class="game__lives">
-        ${new Array(gameData.gameGamerData.gamerLives)
-    .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
-    .join(``)}
-        ${new Array(3 - gameData.gameGamerData.gamerLives)
-    .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
-    .join(``)}
+        ${new Array(this.lives)
+          .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
+          .join(``)}
+        ${new Array(3 - this.lives)
+          .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
+          .join(``)}
       </div>
     </header>
     `;
   }
 
-  bind = () => {
+  bind() {
     // Слушатель для кнопки "Назад"
     document.addEventListener(`click`, (evt) => {
       if (document.querySelector(`.back`)) {
@@ -44,9 +41,7 @@ export default class Header extends AbstractView{
     });
   }
 
-  onBack = () => {
-    functions.setScreen(intro());
-  };
-};
-
-
+  onBack() {
+    // functions.setScreen(intro());
+  }
+}

@@ -1,12 +1,12 @@
-import AbstractView from "../mvc/AbstractView";
-import * as game from "../game";
+import AbstractView from "../AbstractView";
+import * as game from "../../game";
 
-export default class Game1 extends AbstractView{
-  constructor (gameData, questionNumber) {
+export default class Game1 extends AbstractView {
+  constructor(gameData, questionNumber) {
     super();
     this.gameData = gameData;
     this.questionNumber = questionNumber;
-  };
+  }
 
   get template() {
     return `
@@ -29,16 +29,20 @@ export default class Game1 extends AbstractView{
     `;
   }
 
-  bind = () => {
-    this.parentNode.addEventListener(`change`, () => {
-      if (this.parentNode.matches(`.game__answer`)) {
-        this.onSubmit();
+  bind() {
+    document.addEventListener(`change`, (evt) => {
+      if (document.querySelector(`.game__content--wide`)) {
+        if (evt.target &&
+            evt.target.offsetParent &&
+            evt.target.offsetParent.matches(`.game__answer`)) {
+          this.onSubmit(evt.target.offsetParent);
+        }
       }
     });
-  };
+  }
 
-  onSubmit = () => {
-    game.checksAnswerForQuestion(this.gameData, [this.parentNode.querySelector(`input`).value]);
+  onSubmit(parentOfTarget) {
+    game.checksAnswerForQuestion(this.gameData, [parentOfTarget.querySelector(`input`).value]);
     game.createNextGameQuestionScreen(this.gameData);
-  };
-};
+  }
+}

@@ -1,12 +1,12 @@
-import AbstractView from "../mvc/AbstractView";
-import * as functions from "../functions";
+import AbstractView from "../AbstractView";
+import Greeting from "./greeting";
+import Footer from "../template/footer";
+import * as functions from "../../functions";
 
-export default class Intro extends AbstractView{
-  constructor (gameData, questionNumber) {
+export default class Intro extends AbstractView {
+  constructor() {
     super();
-    this.gameData = gameData;
-    this.questionNumber = questionNumber;
-  };
+  }
 
   get template() {
     return `
@@ -19,7 +19,7 @@ export default class Intro extends AbstractView{
     `;
   }
 
-  bind = () => {
+  bind() {
     document.addEventListener(`click`, (evt) => {
       if (document.querySelector(`.intro`)) {
         if (evt.target &&
@@ -28,9 +28,11 @@ export default class Intro extends AbstractView{
         }
       }
     });
-  };
+  }
 
-  onClick = () => {
-    functions.setScreen(greeting());
-  };
-};
+  onClick() {
+    let screenNode = new Greeting();
+    let footerNode = new Footer();
+    functions.setScreen(false, screenNode.element, footerNode.element);
+  }
+}

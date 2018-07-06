@@ -1,12 +1,10 @@
-import AbstractView from "../mvc/AbstractView";
-import * as game from "../game";
+import AbstractView from "../AbstractView";
+import * as game from "../../game";
 
-export default class Rules extends AbstractView{
-  constructor (gameData, questionNumber) {
+export default class Rules extends AbstractView {
+  constructor() {
     super();
-    this.gameData = gameData;
-    this.questionNumber = questionNumber;
-  };
+  }
 
   get template() {
     return `
@@ -29,7 +27,7 @@ export default class Rules extends AbstractView{
     `;
   }
 
-  bind = () => {
+  bind() {
     // Слушатель для проверки статуса кнопки "Go" - отключает, если не указано имя, включает если указано
     document.addEventListener(`keyup`, (evt) => {
       if (document.querySelector(`.rules__form`)) {
@@ -40,7 +38,7 @@ export default class Rules extends AbstractView{
       }
     });
 
-// Слушатель кнопки "Go" - при нажатии начинает игру
+    // Слушатель кнопки "Go" - при нажатии начинает игру
     document.addEventListener(`click`, (evt) => {
       if (document.querySelector(`.rules__form`)) {
         if (evt.target.matches(`.rules__button`)) {
@@ -49,18 +47,18 @@ export default class Rules extends AbstractView{
         }
       }
     });
-  };
+  }
 
-  onGo = () => {
+  onGo() {
     this.gameData = game.createNewGame(document.querySelector(`.rules__input`).value);
     game.createNextGameQuestionScreen(this.gameData);
-  };
+  }
 
-  onChange = (evt) => {
+  onChange(evt) {
     if (evt.target.value !== ``) {
       document.querySelector(`.rules__button`).disabled = false;
     } else {
       document.querySelector(`.rules__button`).disabled = true;
     }
-  };
-};
+  }
+}

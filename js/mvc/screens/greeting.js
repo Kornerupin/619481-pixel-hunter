@@ -1,12 +1,14 @@
-import * as functions from "../functions";
-import rules from "./rules";
+import * as functions from "../../functions";
+import AbstractView from "../AbstractView";
+import Rules from "./rules";
+import Footer from "../template/footer";
 
-export default class Game1 extends AbstractView{
-  constructor (gameData, questionNumber) {
+export default class Game1 extends AbstractView {
+  constructor(gameData, questionNumber) {
     super();
     this.gameData = gameData;
     this.questionNumber = questionNumber;
-  };
+  }
 
   get template() {
     return `
@@ -26,7 +28,7 @@ export default class Game1 extends AbstractView{
     `;
   }
 
-  bind = () => {
+  bind() {
     document.addEventListener(`click`, (evt) => {
       if (document.querySelector(`.greeting`)) {
         if (evt.target &&
@@ -36,9 +38,11 @@ export default class Game1 extends AbstractView{
         }
       }
     });
-  };
+  }
 
-  onClick = () => {
-    functions.setScreen(rules());
-  };
-};
+  onClick() {
+    let screenNode = new Rules();
+    let footerNode = new Footer();
+    functions.setScreen(false, screenNode.element, footerNode.element);
+  }
+}
