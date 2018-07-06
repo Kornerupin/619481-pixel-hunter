@@ -2,6 +2,7 @@ import * as functions from "../../functions";
 import AbstractView from "../AbstractView";
 import Rules from "./rules";
 import Footer from "../template/footer";
+import HeaderMini from "../template/header-mini";
 
 export default class Game1 extends AbstractView {
   constructor(gameData, questionNumber) {
@@ -41,8 +42,9 @@ export default class Game1 extends AbstractView {
   }
 
   onClick() {
+    let headerNode = new HeaderMini();
     let screenNode = new Rules();
     let footerNode = new Footer();
-    functions.setScreen(false, screenNode.element, footerNode.element);
+    functions.setScreen(headerNode.element, screenNode.element, false, footerNode.element);
   }
 }

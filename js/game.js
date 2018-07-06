@@ -114,9 +114,9 @@ const createNextGameQuestionScreen = (gameData) => {
   if (questionNumber === 10 || gameData.gameGamerData.gamerLives === 0) {
     screenNode = new Stats(gameData, false);
 
-    functions.setScreen(headerNode.element, false, screenNode.element, footerNode.element);
+    functions.setScreen(headerNode.element, screenNode.element, false, footerNode.element);
   } else {
-    statsNode = new LocalStats();
+    statsNode = new LocalStats(gameData);
 
     if (gameData.gameQuestionsData[questionNumber].questionNodeType === 1) {
       screenNode = new Game1(gameData, questionNumber);
@@ -128,7 +128,7 @@ const createNextGameQuestionScreen = (gameData) => {
       screenNode = new Game3(gameData, questionNumber);
     }
 
-    functions.setScreen(headerNode.element, statsNode.element, screenNode.element, footerNode.element);
+    functions.setScreen(headerNode.element, screenNode.element, statsNode.element, footerNode.element);
   }
 };
 

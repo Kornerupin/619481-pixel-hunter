@@ -106,14 +106,14 @@ export default class Stats extends AbstractView {
           <tr>
             <td class="result__number">1.</td>
             <td colspan="2">
-              ${new LocalStats(gameData.gameGamerData.gamerAnswers)}
+              ${new LocalStats(gameData).template}
             </td>
             <td class="result__points">×&nbsp;100</td>
             <td class="result__total">${this.countUpTotalScoreWithoutBonuses(gameData.gameGamerData.gamerAnswers)}</td>
           </tr>
-          ${this.createSpeedBonusesString(countSpeedBonuses)};
-          ${this.createLivesBonusesString(gameData.gameGamerData.gamerLives)};
-          ${this.createAntiSpeedBonusesString(countAntiSpeedBonuses)};
+          ${this.createSpeedBonusesString(countSpeedBonuses)}
+          ${this.createLivesBonusesString(gameData.gameGamerData.gamerLives)}
+          ${this.createAntiSpeedBonusesString(countAntiSpeedBonuses)}
           <tr>
             <td colspan="5" class="result__total  result__total--final">${functions.calculateScoreForAnswers(gameData.gameGamerData.gamerLives, gameData.gameGamerData.gamerAnswers)}</td>
           </tr>

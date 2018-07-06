@@ -1,37 +1,49 @@
-export default class LocalStats {
-  constructor(answers) {
-    this.answers = answers;
+import AbstractView from "../AbstractView";
+
+export default class LocalStats extends AbstractView {
+  constructor(gameData) {
+    super();
+    this.gameData = gameData;
+    this.answers = gameData.gameGamerData.gamerAnswers;
   }
 
   get template() {
     return `
       <ul class="stats">
-        ${this.getFillItemsList().innerHTML};
-        ${new Array(10 - this.answers.length).fill(`<li class="stats__result stats__result--unknown"></li>`).join(``)}
+        ${this.getFillItemsList().innerHTML}
       </ul>
       `;
   }
 
   getFillItemsList() {
-    let statsResults = document.querySelectorAll(`.stats .stats .stats__result`);
     let ul = document.createElement(`ul`);
+
+    for (let i = 0; i < this.gameData.gameQuestionsData.length; i++) {
+      let li = document.createElement(`li`);
+      li.classList.add(`stats__result`);
+
+      ul.appendChild(li);
+    }
 
     for (let i = 0; i < this.answers.length; i++) {
       let answerStatus = this.answers[i][0];
       let time = this.answers[i][1];
 
       if (answerStatus === 0) {
-        statsResults[i].classList.add(`stats__result--wrong`);
+        ul.children[i].classList.add(`stats__result--wrong`);
       } else {
         if (this.answers[i][1] <= 10) {
-          statsResults[i].classList.add(`stats__result--fast`);
+          ul.children[i].classList.add(`stats__result--fast`);
         } else if (time > 10 && time < 20) {
-          statsResults[i].classList.add(`stats__result--correct`);
+          ul.children[i].classList.add(`stats__result--correct`);
         } else if (time >= 20) {
-          statsResults[i].classList.add(`stats__result--slow`);
+          ul.children[i].classList.add(`stats__result--slow`);
         }
       }
-      ul.appendChild(statsResults[i]);
+    }
+
+    for (let i = this.answers.length; i < this.gameData.gameQuestionsData.length; i++) {
+      ul.children[i].classList.add(`stats__result--unknown`);
     }
     return ul;
   }

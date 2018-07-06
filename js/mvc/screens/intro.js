@@ -1,4 +1,5 @@
 import AbstractView from "../AbstractView";
+import HeaderMini from "../template/header-mini";
 import Greeting from "./greeting";
 import Footer from "../template/footer";
 import * as functions from "../../functions";
@@ -31,8 +32,9 @@ export default class Intro extends AbstractView {
   }
 
   onClick() {
+    let headerNode = new HeaderMini();
     let screenNode = new Greeting();
     let footerNode = new Footer();
-    functions.setScreen(false, screenNode.element, footerNode.element);
+    functions.setScreen(headerNode.element, screenNode.element, false, footerNode.element);
   }
 }

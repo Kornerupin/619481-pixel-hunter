@@ -1,4 +1,7 @@
 import AbstractView from "../AbstractView";
+import {setScreen} from "../../functions";
+import Footer from "./footer";
+import Intro from "../screens/intro";
 
 export default class Header extends AbstractView {
   constructor(lives) {
@@ -33,8 +36,8 @@ export default class Header extends AbstractView {
     document.addEventListener(`click`, (evt) => {
       if (document.querySelector(`.back`)) {
         if (evt.target &&
-          evt.target.offsetParent &&
-          (evt.target.matches(`.back`) || evt.target.offsetParent.matches(`.header__back`))) {
+            evt.target.offsetParent &&
+            (evt.target.matches(`.back`) || evt.target.offsetParent.matches(`.header__back`))) {
           this.onBack();
         }
       }
@@ -42,6 +45,8 @@ export default class Header extends AbstractView {
   }
 
   onBack() {
-    // functions.setScreen(intro());
+    let startGameContent = new Intro();
+    let startGameFooter = new Footer();
+    setScreen(false, startGameContent.element, false, startGameFooter.element);
   }
 }

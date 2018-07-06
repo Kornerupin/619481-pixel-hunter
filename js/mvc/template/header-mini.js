@@ -1,6 +1,7 @@
 import AbstractView from "../AbstractView";
-import * as functions from "../../functions";
-import intro from "../screens/intro";
+import Intro from "../screens/intro";
+import {setScreen} from "../../functions";
+import Footer from "./footer";
 
 export default class HeaderMini extends AbstractView {
   constructor() {
@@ -34,6 +35,8 @@ export default class HeaderMini extends AbstractView {
   }
 
   onBack() {
-    functions.setScreen(intro());
+    let startGameContent = new Intro();
+    let startGameFooter = new Footer();
+    setScreen(false, startGameContent.element, false, startGameFooter.element);
   }
 }
