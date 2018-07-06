@@ -1,9 +1,16 @@
-import {headerMini} from "../template/header";
+import AbstractView from "../mvc/AbstractView";
+import * as game from "../game";
 
-export default () => {
-  return `
-    ${headerMini};
-    <div class="rules">
+export default class Rules extends AbstractView{
+  constructor (gameData, questionNumber) {
+    super();
+    this.gameData = gameData;
+    this.questionNumber = questionNumber;
+  };
+
+  get template() {
+    return `
+      <div class="rules">
       <h1 class="rules__title">Правила</h1>
       <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
         src="img/photo_icon.png" width="16" height="16"> или рисунок <img
@@ -19,5 +26,41 @@ export default () => {
         <button class="rules__button  continue" type="submit" disabled>Go!</button>
       </form>
     </div>
-`;
+    `;
+  }
+
+  bind = () => {
+    // Слушатель для проверки статуса кнопки "Go" - отключает, если не указано имя, включает если указано
+    document.addEventListener(`keyup`, (evt) => {
+      if (document.querySelector(`.rules__form`)) {
+        if (evt.target &&
+          evt.target.matches(`.rules__input`)) {
+          this.onChange(evt);
+        }
+      }
+    });
+
+// Слушатель кнопки "Go" - при нажатии начинает игру
+    document.addEventListener(`click`, (evt) => {
+      if (document.querySelector(`.rules__form`)) {
+        if (evt.target.matches(`.rules__button`)) {
+          evt.preventDefault();
+          this.onGo();
+        }
+      }
+    });
+  };
+
+  onGo = () => {
+    this.gameData = game.createNewGame(document.querySelector(`.rules__input`).value);
+    game.createNextGameQuestionScreen(this.gameData);
+  };
+
+  onChange = (evt) => {
+    if (evt.target.value !== ``) {
+      document.querySelector(`.rules__button`).disabled = false;
+    } else {
+      document.querySelector(`.rules__button`).disabled = true;
+    }
+  };
 };

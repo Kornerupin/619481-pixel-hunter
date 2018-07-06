@@ -1,30 +1,30 @@
 import footer from "./template/footer";
 
-const setScreen = (screenDataString) => {
-  let screen = createDOMNodeFromTemplate(screenDataString);
-  let screenFooter = createDOMNodeFromTemplate(footer);
-  const centralContent = document.querySelector(`.central`);
+// const setScreen = (screenDataString) => {
+//   let screen = createDOMNodeFromTemplate(screenDataString);
+//   let screenFooter = createDOMNodeFromTemplate(footer);
+//   const centralContent = document.querySelector(`.central`);
+//
+//   while (centralContent.firstChild) {
+//     centralContent.removeChild(centralContent.firstChild);
+//   }
+//
+//   centralContent.appendChild(screen);
+//   centralContent.appendChild(screenFooter);
+// };
 
-  while (centralContent.firstChild) {
-    centralContent.removeChild(centralContent.firstChild);
-  }
-
-  centralContent.appendChild(screen);
-  centralContent.appendChild(screenFooter);
-};
-
-const createDOMNodeFromTemplate = (elementStringData) => {
-  const temp = document.createElement(`div`);
-  const fragment = document.createDocumentFragment();
-
-  temp.innerHTML = elementStringData;
-
-  while (temp.children.length > 0) {
-    fragment.appendChild(temp.children[0]);
-  }
-
-  return fragment;
-};
+// const createDOMNodeFromTemplate = (elementStringData) => {
+//   const temp = document.createElement(`div`);
+//   const fragment = document.createDocumentFragment();
+//
+//   temp.innerHTML = elementStringData;
+//
+//   while (temp.children.length > 0) {
+//     fragment.appendChild(temp.children[0]);
+//   }
+//
+//   return fragment;
+// };
 
 const calculateScoreForAnswers = (lives, answers) => {
   const bonusTime = 10;
